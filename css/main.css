@@ -1,0 +1,329 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+:root {
+	--index: calc(1vw + 1vh);
+	--gutter: 30px;
+	--side-small: 26;
+	--side-big: 36;
+	--depth: 5500px;
+	--transition: .75s cubic-bezier(.075, .5, 0, 1)
+}
+
+/* Скрываем Scrollbar */
+body {
+	scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar { 
+	display: none; /* Safari and Chrome */
+}
+
+@font-face {
+	font-family: raleway_c;
+	src: url(../fonts/raleway-v22-cyrillic-300.woff2);
+	font-weight: 300;
+}
+@font-face {
+	font-family: raleway_c;
+	src: url(../fonts/raleway-v22-cyrillic-100.woff2);
+	font-weight: 100;
+}
+body {
+	background-color: #000;
+	color: #fff;
+	font-size: calc(var(--index) * .8);
+	font-family: raleway_c, sans-serif;
+	line-height: 1.75;
+	height: var(--depth);
+	font-weight: 300;
+}
+.container {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	perspective: 1500px;
+}
+.gallery {
+	transform-style: preserve-3d;
+	height: 100%;
+}
+.frame {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: var(--transition), opacity .75s ease;
+	will-change: transform;
+	transform-style: preserve-3d;
+}
+h1, h2, h3, h4 {
+	font-weight: 100;
+	text-transform: uppercase;
+	line-height: 1;
+}
+.frame h2 {
+	text-align: center;
+	font-size: calc(var(--index) * 3.3);
+}
+.frame-media {
+	position: relative;
+	width: calc(var(--index) * var(--side-small));
+	height: calc(var(--index) * var(--side-big));
+	background-position: center;
+	background-size: cover;
+}
+.frame-media_left {
+	right: calc(var(--side-small) / 2 * var(--index) + var(--gutter));
+}
+.frame-media_right {
+	left: calc(var(--side-small) / 2 * var(--index) + var(--gutter));
+}
+.frame_bg {
+	background-color: rgb(0 0 0 / .87);
+}
+video.frame-media {
+	width: calc(var(--index) * var(--side-big));
+	height: calc(var(--index) * var(--side-small));
+}
+video.frame-media_right {
+	left: calc(var(--side-big) / 2 * var(--index) + var(--gutter));
+}
+video.frame-media_left {
+	right: calc(var(--side-big) / 2 * var(--index) + var(--gutter));
+}
+.text-right > * {
+	position: relative;
+	left: 18vw;
+}
+.text-left > * {
+	position: relative;
+	right: 18vw;
+}
+.frame h3 {
+	font-size: calc(var(--index) * 3);
+}
+.frame p {
+	max-width: 30vw;
+	margin-top: 3vh;
+}
+.soundbutton {
+	position: fixed;
+	bottom: 5vh;
+	right: 5vw;
+	cursor: pointer;
+	width: 24px;
+	transition: .25s ease;
+}
+.soundbutton.paused {
+	opacity: .25;
+}
+
+.black {
+	background-color: #000;
+}
+
+.midle {
+	width: 500px;
+}
+
+.anim-one {
+	-webkit-animation: neon1 0.6s ease-in-out infinite alternate;
+	-moz-animation: neon1 0.6s ease-in-out infinite alternate;
+	animation: neon1 0.6s ease-in-out infinite alternate; 
+}
+
+@-webkit-keyframes neon1 {
+	to {
+	  text-shadow: 0 0 5px #fff,
+				 0 0 10px #fff,
+				 0 0 15px #fff,
+				 0 0 20px #FF1177,
+				 0 0 35px #FF1177,
+				 0 0 40px #FF1177,
+				 0 0 50px #FF1177,
+				 0 0 75px #FF1177;
+	}
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-30px);
+    }
+    60% {
+      transform: translateY(-15px);
+    }
+  }
+
+  @keyframes bounce-two {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-25px);
+    }
+    60% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .anim-two {
+    display: inline-block;
+    animation: bounce 2s infinite;
+    animation-timing-function: ease;
+  }
+
+  .anim-three {
+    display: inline-block;
+    animation: bounce-two 1s infinite;
+    animation-timing-function: ease;
+  }
+
+  .anim-four {
+    display: inline-block;
+    animation: bounce 1.5s infinite;
+    animation-timing-function: ease;
+  }
+
+  .anim-five {
+    display: inline-block;
+    animation: bounce 1.2s infinite;
+    animation-timing-function: ease;
+  }
+
+  @keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .anim-seven {
+	font-weight: bold;
+    font-size: 80px;
+    background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rainbow 5s ease infinite;
+    display: inline-block;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-color: rgba(255, 0, 0, 0);
+      color: rgba(0, 0, 0, 1);
+    }
+    50% {
+      background-color: rgba(255, 0, 0, 1);
+      color: rgba(255, 255, 255, 1);
+    }
+    100% {
+      background-color: rgba(255, 0, 0, 0);
+      color: rgba(0, 0, 0, 1);
+    }
+  }
+
+  .anim-eight {
+    animation: gradient 3s ease-in-out infinite;
+    font-size: 24px;
+	font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    display: inline-block;
+  }
+
+  @keyframes wave-animation {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 75% 100%;
+    }
+  }
+
+  .anim-nine {
+	font-weight: 900;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
+    background-size: 300% 300%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: wave-animation 3s linear infinite;
+    font-size: 36px;
+    display: inline-block;
+  }
+
+  .anim-ten {
+    display: inline-block;
+    font-size: 36px;
+	color: #e3c815;
+	font-weight: 900;
+  }
+
+  .anim-ten span {
+    display: inline-block;
+    animation: float 2s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .anim-fiften {
+    display: inline-block;
+    font-size: 36px;
+    transform-origin: 0% 50%; /* Закрепляем левый край текста */
+    animation: swing 1s ease-in-out infinite;
+  }
+  
+  @keyframes swing {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(10deg); /* Вращаем текст вокруг закреплённого края */
+    }
+  }
+
+  @keyframes flicker {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  .anim-twenty {
+    display: inline-block;
+    font-size: 36px;
+  }
+
+  .anim-twenty span {
+    animation-name: flicker; /* Используем анимацию flicker */
+    animation-duration: 1s; /* Длительность каждого мерцания */
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    /* Добавляем небольшую задержку для каждой буквы, чтобы мерцание было неравномерным */
+    display: inline-block;
+  }
+
+  .anim-twenty span:nth-child(1) { animation-delay: 0.2s; }
+  .anim-twenty span:nth-child(2) { animation-delay: 0.3s; }
+  .anim-twenty span:nth-child(3) { animation-delay: 0.4s; }
+  .anim-twenty span:nth-child(4) { animation-delay: 0.5s; }
+  .anim-twenty span:nth-child(5) { animation-delay: 0.6s; }
+  .anim-twenty span:nth-child(6) { animation-delay: 0.7s; }
