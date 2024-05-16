@@ -8,7 +8,7 @@
 	--gutter: 30px;
 	--side-small: 26;
 	--side-big: 36;
-	--depth: 8500px;
+	--depth: 10000px;
 	--transition: .75s cubic-bezier(.075, .5, 0, 1)
 }
 
@@ -329,6 +329,6 @@ video.frame-media_left {
   .anim-twenty span:nth-child(6) { animation-delay: 0.7s; }
 
   .text-text {
-    font-weight: 900;
-    font-size: 24px;
+    font-weight: bold;
+    font-size: 32px;
   }
